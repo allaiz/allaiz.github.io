@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Allaiz - The Bargain Cloud Project</title>
+    <link rel="stylesheet" href='/assets/css/main.css'>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="robots" content="follow" />
+
+
+    <!-- Search Engine -->
+    <meta name="description" content="Self Employers Working Together to Achieve More">
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="Index">
+    <meta itemprop="description" content="Self Employers Working Together to Achieve More">
+
+  </head>
+  <body>
+    <div class="container-fluid p-0">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand pr-5" href="/">Allaiz</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      
+      <a class="nav-item nav-link px-4 text-white" href="/alliances"> Alliances </a>
+      
+      <a class="nav-item nav-link px-4 text-white" href="/business"> Business </a>
+      
+      <a class="nav-item nav-link px-4 text-white" href="/tech"> Tech </a>
+        
+    </div>
+  </div>
+</nav>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-0 col-lg-2">
+        </div>
+        <div class="col-12 col-lg-8">
+          <br/>
+          <h2>The Bargain Cloud Project</h2>
+<p>You know what sucks? <a href="https://www.abc.net.au/news/2019-02-27/amazon-australia-warehouse-working-conditions/10807308?nw=0">Amazon’s abusive employment practices</a>. You know what else would suck? Being complicit in that by hosting an app on <a href="https://aws.amazon.com/">Amazon Web Services</a>. Oh, and by the way, <a href="https://aws.amazon.com/">AWS</a> rips you off so much with it’s monoply-level pricing that <a href="https://www.zdnet.com/article/all-of-amazons-2017-operating-income-comes-from-aws/">for many years AWS had been responsible for all of Amazon’s profit</a>. What if I told you that there is an easy(ish) way to capture that value for yourself instead, and even resell that to your own customers?
+<!--more-->
+<br /></p>
+<h4 id="money-for-nothing">Money for nothing</h4>
+
+<p>I have have been (un)fortunate enough to have had first-hand experience of the real world value proposition of AWS for a generic <a href="https://en.wikipedia.org/wiki/Software_as_a_service">SaaS</a> startup a few years ago when I became the de facto AWS administrator for 20 person ~$1M <a href="https://www.lightercapital.com/blog/what-is-arr-annual-recurring-revenue-definition-formula/">ARR</a> startup.</p>
+
+<p>To say I was bitterly disappointed would be an understatement.</p>
+
+<p><img src="/tech/images/frustrated.jpg" class="d-none d-lg-block mx-auto" style="max-width: 100%" />
+<img src="/tech/images/frustrated.jpg" class="d-lg-none mx-auto" style="max-width: 100%" /></p>
+
+<p>My prior experience with <a href="https://www.techopedia.com/definition/30455/cloud-infrastructure">clould infrastructure</a> had consisted entirely of working with the superb, but exceptionally expensive <a href="https://www.heroku.com/dynos">Heroku</a> cloud hosting service. Heroku is amazing. For a single exorbitant monthly charge, you can upload web application code and it will just run immediately and start serving requests from the internet - you don’t need to know anything about the server that it is on. What you do need to know however is where on earth you are going to find the money to pay to support a reasonable number of <a href="https://en.wikipedia.org/wiki/Freemium">fremium</a> users for long enough to develop a significant base of loyal subscribers to your <a href="https://en.wikipedia.org/wiki/Software_as_a_service">SaaS</a>. At Heroku prices, that isn’t easy.</p>
+
+<p>Enter AWS. I knew that Heroku used AWS servers, and marked up the price in return for taking away all of your <a href="https://sysadminday.com/">sysadmin</a> responsibilities. I had also heard a lot of hype about how AWS was supposed to streamline the process of setting up your server infrastructure. So when I was unexpectedly handed the responsibility for managing the AWS private cloud for a rapidly growing startup, I expected to encounter something that was going to offer much better pricing than Heroku, in return for doing just a little bit of sysadmin work yourself.</p>
+
+<p>Or, as it turned out, doing almost all of it.</p>
+
+<p>I was horrified at just how little AWS actually does for you. If you are a SaaS startup, all you really get is a bunch of <a href="https://phoenixnap.com/kb/what-is-server-virtualization">virtual servers</a>, just like you could from any other hosting provider, but at a much higher price and with a <a href="https://www.cloudhealthtech.com/blog/aws-data-transfer-pricing">charge for every single byte of traffic in or out</a>. Sure, if you were a manager at a large corporation and AWS was going to save you from doing your own <a href="https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard">PCI DSS</a> or <a href="https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act">HIPAA</a> certification, then that’s real value - but for a <em>software startup</em> that wants to do something bespoke and interesting using the raw material of servers and a network, it was just a Whole. Lot. Of. Money. For. Nothing.</p>
+
+<p>And forget stability - we still had mysterious server outages - only it was much harder to get in contact with support than it would have been with a smaller provider like <a href="https://gthost.com/">Global TeleHost</a>. If you want redundancy or high availability with AWS, you still need to provision backup machines and take care of replication and <a href="https://en.wikipedia.org/wiki/Failover">failover</a> etc etc etc all yourself.</p>
+
+<p>Which ever way I turned, it seemed there was another part of AWS that was basically the same as I would get from any other provider, only that it was 10% easier to do the initial setup through the <a href="https://aws.amazon.com/console/">GUI</a>, and that the costs would blow out horrendously as traffic and snapshot storage mounted up.</p>
+
+<p><br /></p>
+<h4 id="in-search-of-value">In search of value</h4>
+
+<p><img src="/tech/images/datacenter-meeting.jpg" class="d-none d-lg-block mx-auto" style="max-width: 100%" />
+<img src="/tech/images/datacenter-meeting.jpg" class="d-lg-none mx-auto" style="max-width: 100%" /></p>
+
+<p>As is usual in the computer world, the economics of hardware have completely changed. Again.</p>
+
+<p>When AWS first launched it’s <a href="https://aws.amazon.com/ec2/">EC2</a> virtual server offering in 2006, the alternative, if you wanted a reasonable amount of performance, was to buy and rack your own servers. This meant a lot of up front cost and quite a bit of financial risk, especially when you didn’t know what type of load you were going to be servicing. And in 2006, computing power was <em>expensive</em>. Avoiding this type of risk with such large expenses was a huge benefit.</p>
+
+<p>Back then.</p>
+
+<p>Today, however, there are a <a href="https://www.hetzner.com/dedicated-rootserver">myriad</a> <a href="https://gthost.com/">of</a> <a href="https://www.ovhcloud.com/en-au/bare-metal/∂">vendors</a> who provide dedicated physical servers that you can rent, that can be set up for you in mere minutes. They are billed monthly or even daily, and they offer roughly an order of magnitude more performance than the <a href="bcp-cost-comparison.html">equivalently priced offering from AWS</a>. Most of them also provide some kind of admin GUI that gives you all the remote management you would have from AWS, including instant setup with standard Linux ISOs. Alternatively, if you do want to buy and rack your own servers, there are also many affordable colocation options available, and some really great value hardware deals around, ranging from used Xeon systems to the latest <a href="https://www.cpubenchmark.net/high_end_cpus.html">AMD Epyc processors</a>.</p>
+
+<p>I intend to take advantage of this by creating a bargain price enterprise cloud for Allaiz.com. I’m calling it the <strong>Bargain Cloud Project</strong>.</p>
+
+<p><img src="/tech/images/cloud5.jpg" class="d-none d-lg-block mx-auto" style="max-width: 100%" />
+<img src="/tech/images/cloud5.jpg" class="d-lg-none mx-auto" style="max-width: 100%" /></p>
+
+<p>The idea is to have two individual bare-metal servers, in different geographic locations, with the absolute minimum configuration to provide me with all the <a href="https://phoenixnap.com/kb/what-is-server-virtualization">virtual machines</a> I want. This should provide stability through simplicity (less moving parts means less things will break). I am also going to implement basic <a href="https://www.digitalocean.com/community/tutorials/what-is-high-availability">High Availability</a> by having each <a href="https://phoenixnap.com/kb/what-is-server-virtualization">VM</a> able to automatically <a href="https://en.wikipedia.org/wiki/Failover">fail over</a> to the other server in case of problems, and rapid recoverability in case of disaster through the magic of <a href="http://www.openoid.net/why-sanoids-zfs-replication-matters/">ZFS filesystem replication</a>.</p>
+
+<h4 id="rent-or-buy-why-not-both">Rent or buy… why not both?</h4>
+
+<p>Setting up a bargain cloud means I can afford to offer <a href="https://en.wikipedia.org/wiki/Freemium">freemium</a> accounts to my users without going broke. My initial requirement for Allaiz.com is to support up to 1,000 users with a combination of a custom Ruby on Rails app, and some open source servers for email and document storage - perhaps Postfix, Dovecott, and OnlyOffice, although that remains to be determined. That will need a reasonable amount of computing power.</p>
+
+<p>Based on some gut-feel load estimates, I decided that <a href="https://www.hetzner.com/dedicated-rootserver/ax51-nvme">one of these 8 core Ryzen 3700x with 64gb Ram, 2x1TB SSD and 2 add-on 10tb HDDs</a> would be about right. I get the awesome price/performance of the new AMD Zen CPUs along with their hardware memory encryption, and 1tb of Raid0 storage for databases, 10tb of Raid0 storage for documents and emails, and 64gb of Ram to share between the VMs that I am planning to run.</p>
+
+<p>Hetzner provides all of that to me for only € 93.84 per month, which is by far the best price I was able to find. Setup was within 24 hours (and they also offer <a href="https://www.hetzner.com/sb">ready to go servers</a> as well). Just as with AWS, I was given tools that allowed me to immediately install an operating system image (or in my case, manually install a minimalist version of <a href="https://ubuntu.com/server/docs">Ubuntu 20.04</a> running on a <a href="https://openzfs.github.io/openzfs-docs/Getting%20Started/Ubuntu/Ubuntu%2020.04%20Root%20on%20ZFS.html">ZFS mirror root</a>, but that is a story for another time…)</p>
+
+<p><img src="/tech/images/both.jpg" class="d-none d-lg-block mx-auto" style="max-width: 100%" />
+<img src="/tech/images/both.jpg" class="d-lg-none mx-auto" style="max-width: 100%" /></p>
+
+<p>But Hetzner only has datacenters in <a href="https://www.hetzner.com/unternehmen/rechenzentrum/">Germany and Finland</a>, which, given that I am in Australia and am looking to serve an Australian market initially, does satisfy the “different geographic region” requirement for one of my two servers - however I still need another server closer to home. As I mentioned, other dedicated server providers charge a lot more than Hetzner does, and my requirement of needing two <a href="https://en.wikipedia.org/wiki/Solid-state_drive">SSDs</a> and two <a href="https://en.wikipedia.org/wiki/Hard_disk_drive">HDDs</a> in the same server is also a major stumbling block for most of them.</p>
+
+<p>After much investigation, I came to realise that the most economical way to have something locally would be to buy and configure a <a href="https://www.servethehome.com/supermicro-as-1014s-wtrt-review-a-1u-amd-epyc-7002-server/">modest Epyc server</a> from someone like <a href="https://digicor.com.au/systems/AS-1014S-WTRT">these guys</a>, and then <a href="https://www.rackspace.com/cloud/colocation">colocate</a> it with someone like <a href="https://intergrid.com.au/colocation.php">these guys</a>. The monthly cost of collocating the server and a <a href="https://shop.duxtel.com.au/product_info.php?cPath=30_46&amp;products_id=140">router</a> for secure remote access is actually about the same as Hetzner charges for a whole server, but for my requirements it’s still far cheaper than the any of the alternatives.</p>
+
+<h4 id="is-it-worth-it">Is it worth it?</h4>
+
+<p>All up, that plan would cost me around USD$6k in up front hardware and about USD$3,200 a year in server rental and collocation. Let’s call that USD$5,200/year including hardware depreciation, or conveniently, USD$100/week. That’s not trivial, but it’s still well within my personal budget.</p>
+
+<p>So how does that compare to the Heroku and Amazon alternatives?</p>
+
+<p><img src="/tech/images/receipts.jpg" class="d-none d-lg-block mx-auto" style="max-width: 100%" />
+<img src="/tech/images/receipts.jpg" class="d-lg-none mx-auto" style="max-width: 100%" /></p>
+
+<p>I made a rough estimate of the cost of something equivalent from either AWS or Heroku, <a href="bcp-cost-comparison.html">which you can read here if you want all the boring details</a>. It came to over USD$40k/year for AWS, and over USD$54k/year for Heroku, which is more than USD$1,000/week! Those costs would be absolutely prohibitive for a bootstrapped business that I am funding out of savings.</p>
+
+<p>So it seems the Bargain Cloud Project may live up to it’s name.</p>
+
+<p>But anyway, it’s not about the money. It’s about not being complicit in Amazon’s abusive employment practices, which Allaiz.com, as a company dedicated to helping people escape <a href="https://en.wikipedia.org/wiki/Wage_slavery">Wage Slavery</a>, simply cannot do.</p>
+
+<h4 id="investing-in-skills">Investing in skills</h4>
+
+<p>There are some extra skills one needs to learn in order to free oneself from dependence on overpriced cloud VMs. As well as having a basic understanding of networking and Linux system administration, I have found that building the Bargain Cloud Project requires me to learn the following additional skills:</p>
+
+<p><img src="/tech/images/open-book.jpg" class="d-none d-lg-block mx-auto" style="max-width: 100%" />
+<img src="/tech/images/open-book.jpg" class="d-lg-none mx-auto" style="max-width: 100%" /></p>
+
+<p><strong>ZFS</strong>: While putting everything on ZFS filesystems does make a system administrator’s life so much easier that one would have to be insane not to do that with every production server, in my case it’s also essential to the <a href="https://en.wikipedia.org/wiki/Disaster_recovery">Disaster Recovery</a> functionality of the Bargain Cloud Project. ZFS allows each server to backup it’s VMs to the other server in near-real-time, meaning that if one of the servers suffers a catastrophic failure, it would be quick and easy to restore it’s entire environment to a new machine.</p>
+
+<p><strong>Libvirt</strong>: Since I am running my own VMs instead of renting them, I need to know how to use some kind of hypervisor to run them. While Proxmox seems to have the most mindshare in this kind of space, I found that it had too many bells and whistles for my needs, and introduced a lot of brittleness and extra failure modes as a result - for example, renaming a host can be enough to completely break your setup in a seemingly unrecoverable way(https://www.reddit.com/r/homelab/comments/ahw4fj/proxmox_i_changed_my_proxmox_servers_hostname_and/). Libvirt, included with most Linux distributions, is a basic abstraction over KVM and LXC that provides the ability to create, start, stop, and destroy virtual machines from the command line on Linux, with minimal overhead and not too many things that can break.</p>
+
+<p><strong>Postgres Administration</strong>: Admittedly one of the big timesavers provided by Heroku Postgres and Amazon RDS is that you don’t need to know how to set up and administer a database. That being said, the database is most likely the heart of your SaaS, and whether it’s hosted for you or not, there are many things you are going to want to know about how to tune and configure it to get the most out of it in terms of performance and availability. For example, I need to know how to set up live replication to a hot-standby Postgres instance on my other server, since it’s an essential part of setting up automated failover.</p>
+
+<p><strong>Firewalls/nftables</strong>: With numerous VMs running on a virtual network inside my server, I need to control access to them with a firewall, and it also makes sense to have my server act as a NAT gateway to distribute traffic to the various VMs. Nftables is the latest iteration of Linux packet filtering admin tools, and replaces iptables. It’s much more performant and has a cleaner syntax, and for the purpose of managing access to VMs, using it directly results in much simpler and easy to understand rulesets than one tends to get from firewall tools like UFW or firewalld - and when it comes to security, being able to easily understand the contents of my firewall ruleset is important!</p>
+
+<p><strong>DRBD</strong>: I am planning to run services such as email (Dovecott) and document storage (OnlyOffice) that store data on a local filesystem. To be able to fail over automatically to the other server in case of failure, any writes to the filesystem need to be synchronised in real time to the other server. This is the job of Linux’s Distributed Replicated Block Device layer. It’s not particularly hard to set up, but there is a lot to learn about how to use it correctly.</p>
+
+<p><strong>OpenResty and Lua</strong>: Automated failover will be triggered when Cloudflare’s Intelligent Failover system is unable to contact the primary server and reroutes the request to the secondary server. At this point the secondary server needs to do a number of things before serving the request, like starting the services it needs and making sure that the primary server is not going to wake up and start serving requests also. For this to happen, All requests on the secondary server will be proxied through OpenResty, which is a version of NGINX that has the Lua scripting language embedded in it. This should allow a custom Lua script to pause the request, start services, remove the primary server from the Cloudflare load balancer, fork a process to try and take down any service still running on the primary server, and then release the request for servicing by the backup server. This promises to be one of the more fun parts of the project, and might end up as a Github repository too.</p>
+
+<p>I’ll be covering all of these in more detail in the rest of the articles in this series, as I go through the process of configuring my Bargain Cloud environment… To be continued!</p>
+
+<br/>
+
+ 
+  
+    
+  
+ 
+  
+    <h4>Next: <a href="/tech/bcp-cost-comparison.html">Bargain Cloud Cost Comparison</a></h4>
+    
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+          <br/>
+          <p class="small" style="font-style: italic;" >This website contains opinion and discussion only, and is not in any way to be considered legal, financial, or any other kind of advice. Please consult a lawyer, accountant, or licensed financial adviser if you are seeking advice. Your use of this website is conditional upon your acceptance of the Allaiz.com <a href="/terms.html">terms of use</a> and <a href="privacy.html">privacy policy</a>. Copyright Sole Trader Joint Ventures pty ltd 2020 and others; some rights reserved. </p>
+        </div>
+    </div>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+</html>

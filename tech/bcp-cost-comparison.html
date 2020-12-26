@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Allaiz - Bargain Cloud Cost Comparison</title>
+    <link rel="stylesheet" href='/assets/css/main.css'>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="robots" content="follow" />
+
+
+    <!-- Search Engine -->
+    <meta name="description" content="Self Employers Working Together to Achieve More">
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="Index">
+    <meta itemprop="description" content="Self Employers Working Together to Achieve More">
+
+  </head>
+  <body>
+    <div class="container-fluid p-0">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand pr-5" href="/">Allaiz</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      
+      <a class="nav-item nav-link px-4 text-white" href="/alliances"> Alliances </a>
+      
+      <a class="nav-item nav-link px-4 text-white" href="/business"> Business </a>
+      
+      <a class="nav-item nav-link px-4 text-white" href="/tech"> Tech </a>
+        
+    </div>
+  </div>
+</nav>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-0 col-lg-2">
+        </div>
+        <div class="col-12 col-lg-8">
+          <br/>
+          <h2>Bargain Cloud Cost Comparison</h2>
+<p>(Only if you are interested in the boring details…)</p>
+
+<p>To make a rough estimate of what a public cloud equivalent of the Bargain Cloud Project would cost, let’s look at two other options: Heroku, which would save me from all of the effort do doing my own system administration, and AWS, which would be no easier than Hetzner and would only save me the effort of buying an colocating a server here in Australia. 
+<!--more-->
+Using my Hetzner server as a baseline, and assuming that it is split evenly between compute and database, that would mean comparing to the 8 vCPU / 32 GB RAM option from each of these vendors, and then adding in 1TB of mirrored SSD for the database and 10TB of mirrored disk to support file storage for the compute node.</p>
+
+<p><img src="/tech/images/receipts.jpg" class="d-none d-lg-block mx-auto" style="max-width: 100%" />
+<img src="/tech/images/receipts.jpg" class="d-lg-none mx-auto" style="max-width: 100%" /></p>
+
+<p>Starting with Heroku, one of the main features they provide is <a href="https://blog.heroku.com/heroku-autoscaling">autoscaling</a>. This means that when your servers are idle, you don’t pay much at all, but you can automatically spin up new servers as load increases. I’m not going to consider autoscaling in this comparison, because I’m more interested in costs when I actually have regular traffic. That’s because I’m much more price sensitive when costs are high than when they are low - I’m not too concerned if I spend a hundred dollars more while I have little traffic - that’s something I can easily absorb. I am however VERY concerned if costs blow out by thousands of dollars a month when traffic is high - that would ruin me!</p>
+
+<p>Heroku and AWS CPU performance are both measured in “compute units”, which make it difficult to find a meaningful benchmark that could be compared to my server. What is easy to compare however is memory and disk, so I will work with that, since those are also real constraints that would determine the <em>minimum</em> configuration that might be able to match the Hetzner server.</p>
+
+<p>Let’s assume that half of each of my servers will be busy with database processing and the other half will be given over to VMs or reserved for the host machine - so 32GB for a Postgres VM, and the remaining 32GB split 4 ways with 8GB each for 3 VMs and the host - so a total of 24GB usable RAM for compute VMs. Heroku does not have an 8GB Dyno type, but lets assume that it might suit my purposes to have a 14GB performance-l Dyno for an app server, and 4 x 2.5GB performance-m Dynos. The performance-l Dyno would be $500/mth and each of the 4 performance-m Dynos would be $250/mth. That adds up to $1,500/mth, or $18,000/year for the equivalent of each server, or $36,000/year for both, seeing that I am aiming to have rapid-recovery standby machines. And that is just for compute…</p>
+
+<p>We also have to consider the database. Heroku has a fully managed Postgres service, and the closest to a 32GB RAM / 1TB SSD version of that would probably be the “Standard 4”, which is $750/mth, or $9,000 year per server, or $18,000/year in total. That makes for a total of USD$54,000/year for compute and database combined. That is more than 14 times the annual cost of The Bargain Cloud Project! And in fact, even if I <em>could</em> afford to spend $54,000 a year (and I can’t), some of the tools I intend to run such as Postfix, Dovecott, and OnlyOffice are not a particularly good fit for how Heroku Dynos work - I’m not even sure it would be possible to run them on Heroku at all?</p>
+
+<p>What about AWS then? There is actually an AWS EC2 instance type powered by AMD Epyc processors, which are quite similar to the AMD Ryzen process in the Hetzner server I am renting (both are based on AMDs Zen cores). The 8GB ram version of that is the m5a.large, which has 2 VPUs which is also very similar to the number of hyperthreads each compute VM will have in The Bargain Cloud Project. Having a quick look at the <a href="https://calculator.aws/#/">AWS price calculator</a>, 3 of these VMs equipped with 1TB of SSD storage (with reserved iops) and 1TB of data transfer each would be USD$1,093 for the AP-Sydney region, and 3 VMs in EU-Frankfurt would be USD$1,044, for a total of USD$2,137/mth or USD$25,644/year, and that is without adding in 10TB of mirrored HDD storage on each cluster.</p>
+
+<p>For database, there is the Amazon RDS service, which can provide a fully provisioned Postgres instance in much the same way as Heroku does. There is a 4 core, 32GB RAM / 1TB SSD version of that called the db.m5.2xlarge which seems like a reasonable approximation of half of the Hetzner AX51-NVME. It’s USD$500/mth in Sydney and USD$442 in Frankfurt just for the VM, and another $138/mth in Sydney and $137/mth in Frankfurt for 1TB of SSD storage. There is an additional and not inconsiderable charge for provisioned IOPS, and considering the AX51-NVME has directly attached m.2 NVME drives, I presume the equivalent amount of AWS IOPS would best be characterized as “a lot”. But I won’t bother trying to calculate it, seeing that the cost for 2 of these Amazon RDS instances is already up to USD$14,604/year.</p>
+
+<p>That is a total of USD$40,248 without including 20TB of HDD storage and “lots” of provisioned IOPS - oh, and VM and database snapshot storage too, which really adds up. And while that is over 10 times the cost of The Bargain Cloud Project, and therefore once again a complete deal-breaker in terms of my personal budget, my biggest objection to the AWS option is “for what?”. What does AWS give me the the Bargain Cloud Project doesn’t? Actually it’s only about a 10% reduction in the work I have to do because I don’t need to set up a host hypervisor to run VMs. And while Amazon RDS does take away the need to manage a Postgres database server, there are things I want to do with replication and failover that I simply would not be able to do on Amazon RDS, but I can with the Bargain Cloud Project.</p>
+
+<br/>
+
+ 
+  
+ 
+  
+    
+  
+
+
+
+
+  
+    
+  
+
+  
+    <h6>Previous: <a href="/tech/bargain-cloud-project.html">The Bargain Cloud Project</a></h6>
+    
+
+          <br/>
+          <p class="small" style="font-style: italic;" >This website contains opinion and discussion only, and is not in any way to be considered legal, financial, or any other kind of advice. Please consult a lawyer, accountant, or licensed financial adviser if you are seeking advice. Your use of this website is conditional upon your acceptance of the Allaiz.com <a href="/terms.html">terms of use</a> and <a href="privacy.html">privacy policy</a>. Copyright Sole Trader Joint Ventures pty ltd 2020 and others; some rights reserved. </p>
+        </div>
+    </div>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+</html>
